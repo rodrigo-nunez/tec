@@ -29,8 +29,6 @@
 		}
 
 		function registerEventWithID(event, mode, emailID) {
-			console.log("lastEmailId ->"+lastEmailId);
-			console.log("EmailId ->"+emailID);
 			if (lastEmailId!=emailID) {
 				console.log("NO son iguales");
 				lastEmailId = emailID;
@@ -52,8 +50,6 @@
 						console.log(data)
 					});
 				});	
-			} else {
-				console.log("SON iguales");
 			}
 		}		
 
