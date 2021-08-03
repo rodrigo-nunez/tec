@@ -9,7 +9,7 @@
 			
 		function registerEvent(event, mode) {
 			emailID = $('.bodyText>div:not([style*="display: none;"]) div[templateid]').attr("templateid");
-			console.log("En el register event -> "+emailIDToChange);
+			console.log("En el register event -> "+emailID);
 			emailAccount = window.document.querySelector(`.accountPlace`).innerHTML;
 			
 			$.get( `https://k2gy69kvfc.execute-api.us-east-2.amazonaws.com/prod/email-info?Email=${emailAccount}`, function(data, status) {
@@ -29,7 +29,7 @@
 			});
 		}
 
-		function registerEvent(event, mode, emailID) {
+		function registerEventWithID(event, mode, emailID) {
 			if (lastEmailId!=emailID) {
 				lastEmailId = emailID;
 
