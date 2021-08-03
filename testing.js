@@ -30,7 +30,6 @@
 
 		function registerEventWithID(event, mode, emailID) {
 			if (lastEmailId!=emailID) {
-				console.log("NO son iguales");
 				lastEmailId = emailID;
 
 				emailAccount = window.document.querySelector(`.accountPlace`).innerHTML;
