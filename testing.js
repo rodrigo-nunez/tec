@@ -9,7 +9,6 @@
 			
 		function registerEvent(event, mode) {
 			emailID = $('.bodyText>div:not([style*="display: none;"]) div[templateid]').attr("templateid");
-			console.log("En el register event -> "+emailID);
 			emailAccount = window.document.querySelector(`.accountPlace`).innerHTML;
 			
 			$.get( `https://k2gy69kvfc.execute-api.us-east-2.amazonaws.com/prod/email-info?Email=${emailAccount}`, function(data, status) {
@@ -30,7 +29,10 @@
 		}
 
 		function registerEventWithID(event, mode, emailID) {
+			console.log("lastEmailId ->"+lastEmailId);
+			console.log("EmailId ->"+emailID);
 			if (lastEmailId!=emailID) {
+				console.log("NO son iguales");
 				lastEmailId = emailID;
 
 				emailAccount = window.document.querySelector(`.accountPlace`).innerHTML;
@@ -50,6 +52,8 @@
 						console.log(data)
 					});
 				});	
+			} else {
+				console.log("SON iguales");
 			}
 		}		
 
@@ -119,14 +123,12 @@
 			
 		//CAPTURE THE OPEN MAIL ACTIONS
 		$('body').on('click', '.messageListItem',async function () {
-			console.log('abrí el correo');
 			await sleep(1000);
 			var emailID = window.document.getElementById('Email-ID');
 			var emailIDToChange = $('.bodyText>div:not([style*="display: none;"]) div[templateid]').attr("templateid");
-			console.log("En el evento -> "+emailIDToChange);
 			emailID.innerHTML = emailIDToChange;
-			registerEvent("Open", "Training");
-			//registerEvent("Open", "Training", emailIDToChange);
+			//registerEvent("Open", "Training");
+			registerEventWithID("Open", "Training", emailIDToChange);
 		})
 
 		//CAPTURE THE CLICK ON THE REPLY ALL ACTIONS
